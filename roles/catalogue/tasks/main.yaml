@@ -24,7 +24,7 @@
 
 - name: install mongodb client
   ansible.builtin.dnf:
-    name: mongosh
+    name: mongodb-mongosh
     state: present # Installs the shell used to interact with MongoDB
 
 # 3. SCHEMA LOADING (IDEMPOTENT): Ensures data exists without duplicates
