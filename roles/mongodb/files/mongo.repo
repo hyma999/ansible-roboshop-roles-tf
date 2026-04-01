@@ -1,5 +1,19 @@
-[mongodb-org-7.0]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/x86_64/
-enabled=1
-gpgcheck=0
+
+- name: Add MongoDB repo
+  copy:
+    dest: /etc/yum.repos.d/mongo.repo
+    content: |
+      [mongodb-org-7.0]
+      name=MongoDB Repository
+      baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/x86_64/
+      enabled=1
+      gpgcheck=1
+      gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc
+
+- name: Refresh yum cache
+  command: yum makecache
+
+- name: Install MongoDB
+  yum:
+    name: mongodb-org
+    state: present
