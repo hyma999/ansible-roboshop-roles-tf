@@ -1,14 +1,6 @@
-[Unit]
-Description = Cart Service
-[Service]
-User=roboshop
-// highlight-start
-Environment=REDIS_HOST="{{ REDIS_HOST }}"
-Environment=CATALOGUE_HOST="{{ CATALOGUE_HOST }}"
-Environment=CATALOGUE_PORT=80
-// highlight-end
-ExecStart=/bin/node /app/server.js
-SyslogIdentifier=cart
 
-[Install]
-WantedBy=multi-user.target
+[mongodb-org-7.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/x86_64/
+enabled=1
+gpgcheck=0
