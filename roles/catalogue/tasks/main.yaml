@@ -28,7 +28,7 @@
 
 
 - ansible.builtin.dnf:
-    name: mongodb-mongosh ✅   # ✅ FIXED (was mongodb-mongosh ❌)
+    name: mongodb-mongosh 
     state: present
   name: install mongodb client
 
