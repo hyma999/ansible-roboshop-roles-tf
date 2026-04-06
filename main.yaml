@@ -1,6 +1,6 @@
 ---
-- name: roles demo
+- connection: local
   hosts: local
-  connection: local
+  name: roles demo
   roles:
   - demo

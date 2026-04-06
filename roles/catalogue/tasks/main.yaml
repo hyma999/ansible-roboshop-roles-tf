@@ -1,47 +1,56 @@
-- name: app setup
-  ansible.builtin.import_role:
+- ansible.builtin.import_role:
     name: common
     tasks_from: app-setup.yaml
+  name: app setup
   tags:
     - deployment
 
-- name: nodejs setup
-  ansible.builtin.include_role:
+
+- ansible.builtin.include_role:
     name: common
     tasks_from: nodejs-setup.yaml
+  name: nodejs setup
   tags:
     - deployment
 
-- name: systemd setup
-  ansible.builtin.import_role:
+
+- ansible.builtin.import_role:
     name: common
     tasks_from: systemd-setup.yaml
+  name: systemd setup
 
-- name: copy mongo repo
-  ansible.builtin.copy:
-    src: mongo.repo
+
+- ansible.builtin.copy:
     dest: /etc/yum.repos.d/mongo.repo
+    src: mongo.repo
 
-- name: install mongodb client
-  ansible.builtin.dnf:
+  name: copy mongo repo
+
+
+- ansible.builtin.dnf:
     name: mongosh   # ✅ FIXED (was mongodb-mongosh ❌)
     state: present
+  name: install mongodb client
 
-- name: check products loaded
-  ansible.builtin.command: >
+
+- ansible.builtin.command: >
     mongosh --host {{ MONGODB_HOST }} --quiet
     --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
+  name: check products loaded
   register: catalogue_output
 
-- name: load the products
-  ansible.builtin.shell: >
+
+- ansible.builtin.shell: >
     mongosh --host {{ MONGODB_HOST }} </app/db/master-data.js
+  name: load the products
   when: catalogue_output.stdout | int < 0
 
-- name: start catalogue
-  ansible.builtin.service:
+
+- ansible.builtin.service:
+    enabled: yes
     name: catalogue
     state: restarted
-    enabled: yes
+
+  name: start catalogue
   tags:
     - deployment

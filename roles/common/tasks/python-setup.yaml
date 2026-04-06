@@ -1,15 +1,16 @@
-- name: install python
-  ansible.builtin.dnf:
+- ansible.builtin.dnf:
     name: "{{ item }}"
     state: present
   loop:
   - python3 
   - gcc 
   - python3-devel
+  name: install python
 
-- name: install dependencie
-  ansible.builtin.pip:
-    requirements: requirements.txt
+- ansible.builtin.pip:
     executable: pip3.9
+    requirements: requirements.txt
+
   args:
     chdir: /app
+  name: install dependencie
