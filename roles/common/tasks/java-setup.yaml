@@ -8,15 +8,16 @@
     - mysql
   name: install maven and mysql client
 
-- ansible.builtin.command: mvn clean package
-  # Converts source code into a runnable JAR file
-  args:
+- ansible.builtin.command:
     chdir: /app
-  name: build application with maven
+    cmd: mvn clean package
+
+  name: Build application with maven
 
 
-- ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar 
-  # Standardizes the name for the systemd unit file
-  args:
+
+- ansible.builtin.command:
     chdir: /app
-  name: rename artifact for service
+    cmd: mv target/shipping-1.0.jar shipping.jar
+
+  name: Rename artifact for service
