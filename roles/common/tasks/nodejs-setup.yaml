@@ -7,9 +7,10 @@
 
 
 - ansible.builtin.dnf:
-    name: nodejs
+    name:
+      - nodejs
+      - npm
     state: present
-  # Core runtime installation
   name: install nodejs
 
 
