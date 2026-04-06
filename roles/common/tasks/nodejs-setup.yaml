@@ -11,7 +11,7 @@
       - nodejs
       - npm
     state: present
-  name: install nodejs
+  name: install nodejs npm
 
 
 - community.general.npm:
