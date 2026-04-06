@@ -1,16 +1,17 @@
+
+---
+# Purpose: Prepare the Python environment for backend services
 - ansible.builtin.dnf:
     name: "{{ item }}"
     state: present
   loop:
-  - python3 
-  - gcc 
-  - python3-devel
-  name: install python
+    - python3
+    - gcc
+    - python3-devel
+  name: install python packages
 
 - ansible.builtin.pip:
-    executable: pip3.9
-    requirements: requirements.txt
+    executable: pip3.9  # Ensures we use the correct version for RHEL 9
+    requirements: /app/requirements.txt
 
-  args:
-    chdir: /app
-  name: install dependencie
+  name: install dependencies
