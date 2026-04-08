@@ -1,12 +1,12 @@
-ansible_user: ec2-user
 ansible_password: DevOps321
-MONGODB_HOST: mongodb-{{ env }}.hymaaws.online
-REDIS_HOST: redis-{{ env }}.hymaaws.online
-MYSQL_HOST: mysql-{{ env }}.hymaaws.online
-RABBITMQ_HOST: rabbitmq-{{ env }}.hymaaws.online
-CATALOGUE_HOST: catalogue.backend-alb-{{ env }}.hymaaws.online
-USER_HOST: user.backend-alb-{{ env }}.hymaaws.online
-CART_HOST: cart.backend-alb-{{ env }}.hymaaws.online
-SHIPPING_HOST: shipping.backend-alb-{{ env }}.hymaaws.online
-PAYMENT_HOST: payment.backend-alb-{{ env }}.hymaaws.online
+ansible_user: ec2-user
 app_version: v3
+CART_HOST: cart.backend-alb-{{ env }}.hymaaws.online
+CATALOGUE_HOST: catalogue.backend-alb-{{ env }}.hymaaws.online
+MONGODB_HOST: mongodb-{{ env }}.hymaaws.online
+MYSQL_HOST: mysql-{{ env }}.hymaaws.online
+PAYMENT_HOST: payment.backend-alb-{{ env }}.hymaaws.online
+RABBITMQ_HOST: rabbitmq-{{ env }}.hymaaws.online
+REDIS_HOST: redis-{{ env }}.hymaaws.online
+SHIPPING_HOST: shipping.backend-alb-{{ env }}.hymaaws.online
+USER_HOST: user.backend-alb-{{ env }}.hymaaws.online
