@@ -1,5 +1,5 @@
 [Unit]
-Description = Cart Service
+Description = Cart
 [Service]
 User=roboshop
 // highlight-start
